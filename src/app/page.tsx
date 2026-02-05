@@ -1,25 +1,68 @@
 "use client";
 import Image from "next/image";
+import { useState } from "react";
 
-interface stagesInterface {
+interface stageInterface {
   noText: string,
-  gifLink: string
+  gifLink: string, fontSize: number
 }
 
 export default function Home() {
-  const stages: stagesInterface[] = [
+  const stages: stageInterface[] = [
     {
       noText: "no",
-      gifLink: "/videos/1"
+      gifLink: "/gifs/1.gif", fontSize: 0
+    }, {
+      noText: "Really sure ?",
+      gifLink: "/gifs/2.gif", fontSize: 5
+    }, {
+      noText: "Baby, pleeeasse ?",
+      gifLink: "/gifs/3.gif", fontSize: 15
+    }, {
+      noText: "Just think about it",
+      gifLink: "/gifs/4.gif", fontSize: 25
+    }, {
+      noText: "If you say no, I'll be sad",
+      gifLink: "/gifs/5.gif", fontSize: 40,
+    }, {
+      noText: "Baby, Just say yes",
+      gifLink: "/gifs/6.gif", fontSize: 70
+    }, {
+      noText: "",
+      gifLink: "/gifs/7.gif", fontSize: 0
     }
   ]
+  const [where, setWhere] = useState<number>(1);
+  const onNoClick = () => {
+    setWhere(where+1)
+  }
+  const onYesClick = () => {
+    setWhere(7);
+  }
   return (
-    <div className="flex min-h-screen items-center justify-center bg-red-100 dark:bg-black overflow-hidden">
-      <main className="flex flex-col gap-3">
-        <div className="w-full md:w-[40%]">
-          <video src="/videos/1"></video>
+    <div className="flex min-h-screen items-center justify-center dark:bg-black overflow-hidden p-10">
+      <main className="flex flex-col gap-3 justify-center items-center">
+        <div className="md:w-[30dvw] w-[50dvw]">
+          <Image src={`${stages[where-1].gifLink}`}alt={`${stages[where-1].gifLink}`} width={5000} height={5000}
+          className="w-full rounded-xl"
+          />
         </div>
-        <p className="font-bold text-xl text-red-500">Will you be my valentine</p>
+        {(where !== 7) && <>
+          <p className="font-bold text-xl text-red-500">Will you be my valentine ?</p>
+          <div className="flex gap-2 *:p-3 *:rounded-2xl *:text-white *:font-medium *:capitalize *:cursor-pointer *:px-5 *:h-fit items-center">
+            <button className={`bg-green-600`}
+            style={
+              {
+                fontSize: `${where !== 1 && stages[where-1].fontSize}dvw`
+              }
+            }
+            onClick={onYesClick}
+            >Yes</button>
+            <button className="bg-red-600"
+            onClick={onNoClick}
+            >{stages[where-1].noText}</button>
+          </div>
+        </>}
       </main>
     </div>
   );
