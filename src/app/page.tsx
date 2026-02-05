@@ -47,11 +47,11 @@ export default function Home() {
           className="w-full rounded-xl"
           />
         </div>
-        {(where !== 7) && <>
+        {(where !== 7) ? <>
           <div className="w-screen">
             <p className="font-semibold text-xl text-red-500">Will you be my valentine ?</p>
           </div>
-          <div className="flex gap-2 *:p-3 *:rounded-2xl *:text-white *:font-medium *:capitalize *:cursor-pointer *:px-5 *:h-fit items-center">
+          <div className="w-full p-3 justify-center flex gap-2 *:p-3 *:rounded-2xl *:text-white *:font-medium *:capitalize *:cursor-pointer *:px-5 *:h-fit items-center">
             <button className={`bg-green-600`}
             style={
               {
@@ -64,6 +64,8 @@ export default function Home() {
             onClick={onNoClick}
             >{stages[where-1].noText}</button>}
           </div>
+        </> : <>
+            <div className="text-center font-semibold text-6xl text-red-500">Thanks, Malala</div>
         </>}
       </main>
     </div>
