@@ -21,11 +21,11 @@
 
 @font-face {
   font-family: "WorkSans";
-  src: url("/public/fonts/WorkSans.ttf");
+  src: url("/fonts/WorkSans.ttf");
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: WorkSans;
+  font-family: "WorkSans";
 }
