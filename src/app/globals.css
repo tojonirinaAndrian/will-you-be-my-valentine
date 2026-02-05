@@ -19,8 +19,13 @@
   }
 }
 
+@font-face {
+  font-family: "WorkSans";
+  src: url("/public/fonts/WorkSans.ttf");
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: WorkSans;
 }
