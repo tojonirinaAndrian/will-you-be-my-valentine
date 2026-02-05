@@ -14,10 +14,10 @@ export default function Home() {
       gifLink: "/gifs/1.gif", fontSize: 0
     }, {
       noText: "Really sure ?",
-      gifLink: "/gifs/2.gif", fontSize: 5
+      gifLink: "/gifs/2.gif", fontSize: 10
     }, {
       noText: "Baby, pleeeasse ?",
-      gifLink: "/gifs/3.gif", fontSize: 15
+      gifLink: "/gifs/3.gif", fontSize: 20
     }, {
       noText: "Just think about it",
       gifLink: "/gifs/4.gif", fontSize: 25
@@ -40,15 +40,17 @@ export default function Home() {
     setWhere(7);
   }
   return (
-    <div className="flex min-h-screen items-center justify-center dark:bg-black overflow-hidden p-10">
-      <main className="flex flex-col gap-3 justify-center items-center">
-        <div className="md:w-[30dvw] w-[50dvw]">
-          <Image src={`${stages[where-1].gifLink}`}alt={`${stages[where-1].gifLink}`} width={5000} height={5000}
+    <div className="flex min-h-screen items-center justify-center dark:bg-black overflow-hidden p-10 bg-red-50">
+      <main className="flex flex-col gap-3 justify-center items-center text-center">
+        <div className="md:w-[25dvw] w-[50dvw]">
+          <Image src={`${stages[where-1].gifLink}`} alt={`${stages[where-1].gifLink}`} width={5000} height={5000}
           className="w-full rounded-xl"
           />
         </div>
         {(where !== 7) && <>
-          <p className="font-bold text-xl text-red-500">Will you be my valentine ?</p>
+          <div className="w-screen">
+            <p className="font-semibold text-xl text-red-500">Will you be my valentine ?</p>
+          </div>
           <div className="flex gap-2 *:p-3 *:rounded-2xl *:text-white *:font-medium *:capitalize *:cursor-pointer *:px-5 *:h-fit items-center">
             <button className={`bg-green-600`}
             style={
@@ -58,9 +60,9 @@ export default function Home() {
             }
             onClick={onYesClick}
             >Yes</button>
-            <button className="bg-red-600"
+            {(where !== 6) && <button className="bg-red-600"
             onClick={onNoClick}
-            >{stages[where-1].noText}</button>
+            >{stages[where-1].noText}</button>}
           </div>
         </>}
       </main>
