@@ -20,13 +20,27 @@
 }
 
 @font-face {
-  font-family: "WorkSans";
-  src: url("/fonts/WorkSans.ttf");
+  font-family: "Jersey10";
+  src: url("/fonts/Jersey10.ttf");
 }
 
+@font-face {
+  font-family: "Lobster";
+  src: url("/fonts/LobsterTwo-Regular.ttf");
+}
+
+@font-face {
+  font-family: "MonteCarlo";
+  src: url("/fonts/MonteCarlo.ttf");
+}
+
+@font-face {
+  font-family: "PlaywriteGBJGuides";
+  src: url("/fonts/PlaywriteGBJGuides-Regular.ttf");
+}
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "WorkSans";
+  font-family: "Jersey10";
   transition: 0.3s;
 }
