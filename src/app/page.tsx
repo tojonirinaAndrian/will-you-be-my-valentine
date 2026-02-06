@@ -41,36 +41,35 @@ export default function Home() {
   };
   const mineAudio = new Audio("/audio/mine.mpeg");
   const [trynaPlay, startPlaying] = useTransition();
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [choosed, setChoosed] = useState<boolean>(false);
   const onPlayClick = () => {
     console.log("will play the song now!");
-    !isPlaying && startPlaying (async () => {
+    startPlaying (async () => {
       await mineAudio.play();
-      setIsPlaying(true);
     });
   }
   return (
     <>
     {!choosed && <div className="w-screen h-screen bg-black/80 fixed top-0 right-0 flex justify-center items-center p-3">
-      <div className="bg-white p-5 space-y-3 rounded-xl w-full text-center">
+      <div className="bg-white p-5 space-y-3 rounded-xl w-full md:w-[30dvw] text-center">
         <p className="font-2xl font-semibold">Play music ?</p>
-        <div className="w-full md:flex *:w-full *:rounded-md *:p-3 gap-2 space-y-1">
+        <div className="w-full md:flex flex-col md:flex-row *:w-full *:rounded-md *:p-3 gap-1 *:cursor-pointer">
           <button className="bg-green-400 text-green-900"
           onClick={() => {
             onPlayClick(); 
             setChoosed(true)
           }}
-          >On music</button>
+          >Continue with music</button>
           <button className="bg-blue-200 text-blue-700"
           onClick={() => setChoosed(true)}
-          >Off music</button>
+          >Continue without music</button>
         </div>
       </div>
     </div>}
     <div
     className="flex min-h-screen items-center justify-center dark:bg-black overflow-hidden p-10 bg-red-50"
     >
+      {trynaPlay && <div className="text-center text-red-700 text-xl">Music loading...</div>}
       {choosed && <>
         <main className="flex flex-col gap-3 justify-center items-center text-center">
           <div className="md:w-[25dvw] w-[50dvw]">
@@ -96,7 +95,7 @@ export default function Home() {
               >{stages[where-1].noText}</button>}
             </div>
           </> : <>
-              <div className="text-center font-semibold text-6xl text-red-500">Thanks you Malala</div>
+              <div className="text-center font-semibold text-6xl text-red-500">Thank you Malala</div>
           </>}
         </main>
       </>}
