@@ -69,8 +69,8 @@ export default function Home() {
     <div
     className="flex min-h-screen items-center justify-center dark:bg-black overflow-hidden p-10 bg-red-50"
     >
-      {trynaPlay && <div className="text-center text-red-700 text-xl">Music loading...</div>}
-      {choosed && <>
+      {trynaPlay && <div className="text-center text-red-700 text-xl font-semibold">Music loading...</div>}
+      {(choosed && !trynaPlay) && <>
         <main className="flex flex-col gap-3 justify-center items-center text-center">
           <div className="md:w-[25dvw] w-[50dvw]">
             <Image src={`${stages[where-1].gifLink}`} alt={`${stages[where-1].gifLink}`} width={5000} height={5000}
