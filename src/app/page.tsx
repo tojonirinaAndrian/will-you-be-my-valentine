@@ -63,7 +63,7 @@ export default function Home() {
   const audioRef = useRef<Howl | null>(null);
   const [name, setName] = useState<string>("");
   const [musicOnOff, setMusicOnOff] = useState<boolean>(true);
-  
+
   useEffect(() => {
     const mineAudio = new Howl({
       src: ["/audio/mine.mpeg"],
@@ -114,10 +114,9 @@ export default function Home() {
               </div>
             </div>
             <button
-              disabled={name.length > 0}
-              className={`w-full p-2 text-center bg-red-400 text-white rounded-md ${name.length <= 0 && "opacity-20"}`}
+              className={`w-full p-3 text-center bg-red-600 text-white rounded-md ${name.length <= 0 && "opacity-20"}`}
               onClick={() => {
-                name.length > 0 && onContinueClick();
+                !(name.length <= 0) && onContinueClick();
               }}
             >
               Continue
