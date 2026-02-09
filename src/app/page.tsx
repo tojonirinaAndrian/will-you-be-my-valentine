@@ -50,16 +50,22 @@ export default function Home() {
   
   const [trynaPlay, startPlaying] = useTransition();
   const [choosed, setChoosed] = useState<boolean>(false);
-  const onPlayClick = () => {
+  const  audioRef = useRef<Howl | null>(null);
+  
+  useEffect(() => {
     const mineAudio = new Howl({
       src: ["/audio/mine.mpeg"],
       volume: 0.5,
       loop: true
     });
+    audioRef.current = mineAudio;
+  }, []);
+
+  const onPlayClick = () => {
     console.log("will play the song now!");
     startPlaying (() => {
-      mineAudio.play();
-      mineAudio.fade(0, 1, 1000);
+      audioRef.current?.play();
+      audioRef.current?.fade(0, 1, 1000);
     });
   };
 
