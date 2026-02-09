@@ -51,7 +51,6 @@ export default function Home() {
   
   const [trynaPlay, startPlaying] = useTransition();
   const [choosed, setChoosed] = useState<boolean>(false);
-  const preloadedImgs = useRef<HTMLImageElement[]>([]);
 
   const onPlayClick = () => {
     const mineAudio = new Howl({
@@ -66,6 +65,12 @@ export default function Home() {
     });
   };
 
+  useEffect(() => {
+    stages.forEach(s => {
+      const img = new window.Image();
+      img.src = s.gifLink;
+    });
+  }, []);
 
   return (
     <>
@@ -109,7 +114,7 @@ export default function Home() {
                 }
               }
               onClick={onYesClick}
-              >Yes, I will</button>
+              >Yes</button>
               {(where !== 6) && <button className="bg-red-600"
               onClick={onNoClick}
               >{stages[where-1].noText}</button>}
