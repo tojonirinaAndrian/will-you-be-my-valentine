@@ -1,24 +1,29 @@
 "use client";
 import Image from "next/image";
-import { useRef, useState, useTransition } from "react";
+import { useRef, useState, useTransition, useEffect } from "react";
 import { Howl } from "howler";
+import Head from "next/head";
 
 interface stageInterface {
   noText: string,
-  gifLink: string, fontSize: number
+  gifLink: string, 
+  fontSize: number
 }
 
 export default function Home() {
   const stages: stageInterface[] = [
     {
       noText: "no",
-      gifLink: "/gifs/1.gif", fontSize: 0
+      gifLink: "/gifs/1.gif", 
+      fontSize: 0
     }, {
       noText: "Really sure ?",
-      gifLink: "/gifs/2.gif", fontSize: 10
+      gifLink: "/gifs/2.gif", 
+      fontSize: 10
     }, {
       noText: "Baby, pleeeasse ?",
-      gifLink: "/gifs/3.gif", fontSize: 20
+      gifLink: "/gifs/3.gif", 
+      fontSize: 20
     }, {
       noText: "Just think about it",
       gifLink: "/gifs/4.gif", fontSize: 25
@@ -46,7 +51,7 @@ export default function Home() {
   
   const [trynaPlay, startPlaying] = useTransition();
   const [choosed, setChoosed] = useState<boolean>(false);
-  const songRef = useRef<Howl>(null);
+  const preloadedImgs = useRef<HTMLImageElement[]>([]);
 
   const onPlayClick = () => {
     const mineAudio = new Howl({
@@ -54,7 +59,6 @@ export default function Home() {
       volume: 0.5,
       loop: true
     });
-    songRef.current = mineAudio;
     console.log("will play the song now!");
     startPlaying (() => {
       mineAudio.play();
@@ -62,8 +66,10 @@ export default function Home() {
     });
   };
 
+
   return (
     <>
+    
     {!choosed && <div className="w-screen h-screen bg-black/80 fixed top-0 right-0 flex justify-center items-center p-3">
       <div className="bg-white p-5 space-y-3 rounded-xl w-full md:w-[30dvw] text-center">
         <p className="font-2xl font-semibold">Play music ?</p>
@@ -87,7 +93,7 @@ export default function Home() {
       {(choosed && !trynaPlay) && <>
         <main className="flex flex-col gap-3 justify-center items-center text-center">
           <div className="md:w-[25dvw] w-[50dvw]">
-            <Image src={`${stages[where-1].gifLink}`} alt={`${stages[where-1].gifLink}`} width={5000} height={5000}
+            <Image src={`${stages[where-1].gifLink}`} alt={`${stages[where-1].gifLink}`} width={500} height={500}
             className="w-full rounded-xl"
             />
           </div>
