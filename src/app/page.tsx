@@ -47,11 +47,9 @@ export default function Home() {
   const onYesClick = () => {
     setWhere(7);
   };
-  // const mineAudio = new Audio("/audio/mine.mpeg");
   
   const [trynaPlay, startPlaying] = useTransition();
   const [choosed, setChoosed] = useState<boolean>(false);
-
   const onPlayClick = () => {
     const mineAudio = new Howl({
       src: ["/audio/mine.mpeg"],
@@ -64,13 +62,6 @@ export default function Home() {
       mineAudio.fade(0, 1, 1000);
     });
   };
-
-  useEffect(() => {
-    stages.forEach(s => {
-      const img = new window.Image();
-      img.src = s.gifLink;
-    });
-  }, []);
 
   return (
     <>
@@ -98,9 +89,13 @@ export default function Home() {
       {(choosed && !trynaPlay) && <>
         <main className="flex flex-col gap-3 justify-center items-center text-center">
           <div className="md:w-[25dvw] w-[50dvw]">
-            <Image src={`${stages[where-1].gifLink}`} alt={`${stages[where-1].gifLink}`} width={500} height={500}
-            className="w-full rounded-xl"
-            />
+            {stages.map((stage) => {
+              return <Image 
+              priority
+              key={stage.gifLink} src={`${stage.gifLink}`} alt={`${stage.gifLink}`} width={500} height={500}
+              className={`${(stage.gifLink === stages[where-1].gifLink) ? "block" : "hidden"} w-full rounded-xl`}
+              />
+            })}
           </div>
           {(where !== 7) ? <>
             <div className="w-screen">
