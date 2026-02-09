@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Head from "next/head";
 
 export const metadata: Metadata = {
-  title: "Will you be my valentine ?",
+  title: "Valentine's day",
   description: "Will you be my valentine ?",
 };
 
