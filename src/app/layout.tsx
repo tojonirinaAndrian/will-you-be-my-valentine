@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Will you be my valentine ?",
   description: "Will you be my valentine ?",
 };
-const imagesLinks = [
+const imagesLinks: string[] = [
   "/gifs/1.gif",
   "/gifs/2.gif",
   "/gifs/3.gif",

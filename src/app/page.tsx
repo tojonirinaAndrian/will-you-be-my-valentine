@@ -109,7 +109,7 @@ export default function Home() {
                 }
               }
               onClick={onYesClick}
-              >Yes</button>
+              >Yes, I will</button>
               {(where !== 6) && <button className="bg-red-600"
               onClick={onNoClick}
               >{stages[where-1].noText}</button>}
