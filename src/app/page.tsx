@@ -51,13 +51,14 @@ export default function Home() {
   const onPlayClick = () => {
     const mineAudio = new Howl({
       src: ["/audio/mine.mpeg"],
-      volume: 0.7,
+      volume: 0.5,
       loop: true
     });
     songRef.current = mineAudio;
     console.log("will play the song now!");
-    startPlaying (async () => {
-      await mineAudio.play();
+    startPlaying (() => {
+      mineAudio.play();
+      mineAudio.fade(0, 1, 1000);
     });
   };
 
@@ -66,7 +67,7 @@ export default function Home() {
     {!choosed && <div className="w-screen h-screen bg-black/80 fixed top-0 right-0 flex justify-center items-center p-3">
       <div className="bg-white p-5 space-y-3 rounded-xl w-full md:w-[30dvw] text-center">
         <p className="font-2xl font-semibold">Play music ?</p>
-        <div className="w-full md:flex flex-col md:flex-row *:w-full *:rounded-md *:p-3 gap-1 *:cursor-pointer">
+        <div className="w-full space-y-1 md:flex flex-col md:flex-row *:w-full *:rounded-md *:p-3 gap-1 *:cursor-pointer">
           <button className="bg-green-400 text-green-900"
           onClick={() => {
             onPlayClick(); 
