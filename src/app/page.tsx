@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
-import { useState, useTransition } from "react";
+import { useRef, useState, useTransition } from "react";
+import { Howl } from "howler";
 
 interface stageInterface {
   noText: string,
@@ -31,23 +32,35 @@ export default function Home() {
       noText: "",
       gifLink: "/gifs/7.gif", fontSize: 0
     }
-  ]
+  ];
+
   const [where, setWhere] = useState<number>(1);
   const onNoClick = () => {
     setWhere(where+1)
-  }
+  };
+
   const onYesClick = () => {
     setWhere(7);
   };
-  const mineAudio = new Audio("/audio/mine.mpeg");
+  // const mineAudio = new Audio("/audio/mine.mpeg");
+  
   const [trynaPlay, startPlaying] = useTransition();
   const [choosed, setChoosed] = useState<boolean>(false);
+  const songRef = useRef<Howl>(null);
+
   const onPlayClick = () => {
+    const mineAudio = new Howl({
+      src: ["/audio/mine.mpeg"],
+      volume: 0.7,
+      loop: true
+    });
+    songRef.current = mineAudio;
     console.log("will play the song now!");
     startPlaying (async () => {
       await mineAudio.play();
     });
-  }
+  };
+
   return (
     <>
     {!choosed && <div className="w-screen h-screen bg-black/80 fixed top-0 right-0 flex justify-center items-center p-3">
