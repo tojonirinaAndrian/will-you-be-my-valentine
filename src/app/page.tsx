@@ -60,7 +60,7 @@ export default function Home() {
     // TODO : send email
     const response = await axios.post(FORMSPREE_URL, {
       name: name,
-      message: `yes , ${name} will you be the valentine.`,
+      message: `Yes, me, ${name}, will be the valentine.`,
     });
     console.log(response);
   };
