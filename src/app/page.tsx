@@ -12,7 +12,7 @@ interface stageInterface {
 export default function Home() {
   const stages: stageInterface[] = [
     {
-      noText: "no",
+      noText: "No",
       gifLink: "/gifs/1.gif",
       fontSize: 0,
     },
@@ -85,7 +85,7 @@ export default function Home() {
   return (
     <>
       {!choosed && (
-        <div className="w-screen h-screen bg-black/80 fixed top-0 right-0 flex justify-center items-center p-3">
+        <div className="w-screen h-screen bg-black/70 fixed top-0 right-0 flex justify-center items-center p-3">
           <div className="bg-white p-5 space-y-3 rounded-xl w-full md:w-[30dvw]">
             <div>
               <p className="text-black/60">Name</p>
@@ -97,7 +97,7 @@ export default function Home() {
               />
             </div>
             <div>
-              <p className="text-black/60">Play with music ?</p>
+              <p className="text-black/60">Play with music on ?</p>
               <div className="flex w-full gap-1 *:p-2">
                 <button
                   onClick={() => !musicOnOff && setMusicOnOff(true)}
@@ -124,13 +124,13 @@ export default function Home() {
           </div>
         </div>
       )}
-      <div className="flex min-h-screen items-center justify-center dark:bg-black overflow-hidden p-10 bg-red-50">
+      <div className="flex min-h-screen items-center justify-center dark:bg-black overflow-hidden p-10 bg-red-100/70">
         {trynaPlay && (
           <div className="text-center text-red-700 text-xl font-semibold">
             Music loading...
           </div>
         )}
-        {choosed && !trynaPlay && (
+        {(choosed && !trynaPlay) && (
           <>
             <main className="flex flex-col gap-3 justify-center items-center text-center">
               <div className="md:w-[25dvw] w-[50dvw]">
@@ -143,7 +143,7 @@ export default function Home() {
                       alt={`${stage.gifLink}`}
                       width={500}
                       height={500}
-                      className={`${stage.gifLink === stages[where - 1].gifLink ? "block" : "hidden"} w-full rounded-xl`}
+                      className={`${stage.gifLink === stages[where - 1].gifLink ? "block" : "hidden"} shadow-sm w-full rounded-md`}
                     />
                   );
                 })}
@@ -151,11 +151,11 @@ export default function Home() {
               {where !== 7 ? (
                 <>
                   <div className="w-screen">
-                    <p className="font-semibold text-xl text-red-500">
+                    <p className="text-2xl text-red-500">
                       Will you be my valentine ?
                     </p>
                   </div>
-                  <div className="w-full p-3 justify-center flex gap-2 *:p-3 *:rounded-md *:text-white *:font-medium *:capitalize *:cursor-pointer *:px-5 *:h-fit items-center">
+                  <div className="w-full p-3 justify-center flex gap-2 *:p-3 *:rounded-md *:text-white *:font-medium *:cursor-pointer *:px-5 *:h-fit items-center">
                     <button
                       className={`bg-green-600`}
                       style={{
@@ -174,7 +174,7 @@ export default function Home() {
                 </>
               ) : (
                 <>
-                  <div className="text-center font-semibold text-6xl text-red-500">
+                  <div className="text-center text-6xl text-red-500">
                     Thank you Malala
                   </div>
                 </>
