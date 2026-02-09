@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useRef, useState, useTransition, useEffect } from "react";
 import { Howl } from "howler";
+import axios from "axios";
 
 interface stageInterface {
   noText: string;
@@ -10,6 +11,7 @@ interface stageInterface {
 }
 
 export default function Home() {
+  const FORMSPREE_URL: string = "https://formspree.io/f/xdalkzja";
   const stages: stageInterface[] = [
     {
       noText: "No",
@@ -53,9 +55,14 @@ export default function Home() {
     setWhere(where + 1);
   };
 
-  const onYesClick = () => {
+  const onYesClick = async () => {
     setWhere(7);
     // TODO : send email
+    const response = await axios.post(FORMSPREE_URL, {
+      name: name,
+      message: `yes , ${name} will you be the valentine.`,
+    });
+    console.log(response);
   };
 
   const [trynaPlay, startPlaying] = useTransition();
