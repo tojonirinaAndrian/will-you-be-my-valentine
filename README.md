@@ -25,7 +25,7 @@ To set up the project locally, follow these steps:
    ```
 
 ## Tech Stack
-- **Frontend:** Next.JS
+- **Frontend:** Next.JS, TailwindCSS
 - **Highlighted Tools:** Formspree (for emailing), howler.js (for the music)
 
 Thank you for Reading.me!
