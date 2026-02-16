@@ -1,10 +1,9 @@
 # Will You Be My Valentine
 
 ## Project Overview
-This project is a fun and interactive application designed to celebrate Valentine's Day. It allows users to create and share personalized Valentine messages and cards with their loved ones.
+This project is simple fun project designed to ask someone to be your valentine. Actually, I was asked by a friend to make this.
+For short, it may play a song through the website, the YES button will get bigger as the user presses NO and it will send me an email when the user clicks on YES. It looks cute and charming.
 
-## Purpose
-The purpose of this application is to bring joy and creativity to Valentine's Day by enabling users to customize their messages and express their feelings in a unique way.
 
 ## Setup Instructions
 To set up the project locally, follow these steps:
@@ -18,34 +17,15 @@ To set up the project locally, follow these steps:
    ```
 3. Install dependencies:
    ```bash
-   npm install
+   bun install
    ```
 4. Start the application:
    ```bash
-   npm start
+   bun run dev
    ```
 
 ## Tech Stack
-- **Frontend:** React
-- **Backend:** Node.js, Express
-- **Database:** MongoDB
-- **Deployment:** Heroku
+- **Frontend:** Next.JS
+- **Highlighted Libraries:** Formspee (for emailing), howler.js (for the music)
 
-## Contribution Guidelines
-We welcome contributions! To contribute to this project:
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix:
-   ```bash
-   git checkout -b feature/YourFeature
-   ```
-3. Make your changes and commit them:
-   ```bash
-   git commit -m "Add a new feature"
-   ```
-4. Push your changes:
-   ```bash
-   git push origin feature/YourFeature
-   ```
-5. Create a pull request.
-
-Thank you for considering contributing to our project!
+Thank you for Reading.me!
