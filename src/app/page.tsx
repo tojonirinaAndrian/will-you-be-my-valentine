@@ -56,12 +56,13 @@ export default function Home() {
   };
 
   const onYesClick = async () => {
-    setWhere(7);
     // TODO : send email
     const response = await axios.post(FORMSPREE_URL, {
       name: name,
       message: `Yes, me, ${name}, will be the valentine.`,
+      where
     });
+    setWhere(7);
     console.log(response);
   };
 
